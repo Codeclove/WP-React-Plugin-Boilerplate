@@ -3,7 +3,40 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 const config = require('./config');
+
+const options = {
+  extensions: [`js`, `jsx`, 'ts', 'tsx'],
+  exclude: [`/node_modules/`],
+  fix: true,
+
+  overrideConfig: {
+    parser: '@babel/eslint-parser',
+    parserOptions: {
+      requireConfigFile: false,
+      babelOptions: {
+        presets: ['@babel/preset-react'],
+      },
+    },
+    plugins: ['prettier'],
+    //Pravidla su v subore .prettierrc
+    rules: {
+      'no-console': 'warn',
+      'prettier/prettier': ['error'],
+      'react/jsx-filename-extension': [
+        1,
+        { extensions: ['.js', '.jsx'] },
+      ],
+    },
+    env: {
+      browser: true,
+      node: true,
+    },
+    extends: ['airbnb', 'prettier'],
+  },
+};
 
 module.exports = {
   optimization: {
@@ -36,26 +69,10 @@ module.exports = {
       files: '**/*.php',
       proxy: config.proxyUrl,
     }),
+    new ESLintPlugin(options),
   ],
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|ts|tsx)$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          fix: true,
-          parser: 'babel-eslint',
-          extends: ['airbnb', 'prettier'],
-          plugins: ['prettier'],
-          //Pravidla su v subore .prettierrc
-          rules: {
-            'no-console': 'warn',
-            'prettier/prettier': ['error'],
-          },
-        },
-      },
       //Nastavenie babel loadera
       {
         test: /\.m?js$/,
