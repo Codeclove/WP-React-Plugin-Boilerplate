@@ -115,11 +115,11 @@ class Test_Plugin_Admin
             'function' => array($this, 'settings_page'),
             'position' => 99,
         ));
-
     }
 
-    public function settings_page() {
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/test-plugin-admin-display.php';
+    public function settings_page()
+    {
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';
     }
 
 }
