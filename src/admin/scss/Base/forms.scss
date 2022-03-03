@@ -1,0 +1,23 @@
+#react-admin {
+  //Input reset
+  input[type='text'] {
+    padding: 16.5px 14px;
+    line-height: 1;
+    min-height: unset;
+    outline: 0;
+    border: 0;
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: unset;
+      outline: 0;
+    }
+  }
+
+  //Switcher reset
+  input[type='checkbox'],
+  input[type='radio'] {
+    height: 100%;
+  }
+}
+

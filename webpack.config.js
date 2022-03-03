@@ -9,7 +9,6 @@ const config = require('./config');
 
 const options = {
   extensions: [`js`, `jsx`, 'ts', 'tsx'],
-  exclude: [`/node_modules/`],
   fix: true,
 
   overrideConfig: {

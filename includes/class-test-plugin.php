@@ -124,10 +124,11 @@ class Test_Plugin {
 
 
 		//Classes
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-menu.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-submenu.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-menu-tabs.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-cpt.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-menu.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-submenu.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-menu-tabs.php';
 
 		$this->loader = new Test_Plugin_Loader();
 
@@ -165,8 +166,12 @@ class Test_Plugin {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 
+		//Custom post type
+		//$this->loader->add_action('init', $plugin_admin, 'register_cpt');
 		//Settings page
-		$this->loader->add_action('_admin_menu', $plugin_admin, 'add_settings_page');
+		$this->loader->add_action('_admin_menu', $plugin_admin, 'add_menu_item');
+		//Register endpoints
+		$this->loader->add_action('rest_api_init', $plugin_admin, 'register_endpoints');
 
 	}
 

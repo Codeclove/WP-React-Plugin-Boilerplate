@@ -102,24 +102,89 @@ class Test_Plugin_Admin
 
         wp_enqueue_script($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/js/admin.js', array('jquery'), $this->version, false);
 
-    }
-
-    public function add_settings_page()
-    {
-
-        $customWPMenu = new WordPressMenu(array(
-            'slug' => 'wpmenu',
-            'title' => 'WP Menu',
-            'desc' => 'Settings for theme custom WordPress Menu',
-            'icon' => 'dashicons-welcome-widgets-menus',
-            'function' => array($this, 'settings_page'),
-            'position' => 99,
+        //WP rest api authentification
+        wp_localize_script($this->plugin_name, 'wpApiSettings', array(
+            'root' => esc_url_raw(rest_url()),
+            'nonce' => wp_create_nonce('wp_rest'),
+            'user' => wp_get_current_user(),
         ));
+
     }
 
-    public function settings_page()
+    public function register_cpt()
     {
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';
+        $cpt = new TestPlugin\CPT;
+        $cpt->init();
+    }
+
+    public function add_menu_item()
+    {
+
+        /**
+         * Adds a submenu page under a custom post type parent.
+         */
+
+        add_submenu_page(
+            'edit.php?post_type=custom-posts',
+            __('Books Shortcode Reference', 'textdomain'),
+            __('Názov submenu', 'textdomain'),
+            'manage_options',
+            'react-settings',
+        );
+
+        /**
+         * Add the top level menu page.
+         */
+
+        add_menu_page(
+            'React settings', //Page title
+            'React settings', //Menu title
+            'manage_options',
+            'react-settings',
+            function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';},
+        );
+
+    }
+
+    public function register_endpoints()
+    {
+        register_rest_route($this->plugin_name . '/v1', '/admin-settings', array(
+            array(
+                'methods' => 'GET',
+                'callback' => array($this, 'admin_settings_get_route'),
+                'permission_callback' => function () {
+                    return current_user_can('manage_options');
+                },
+            ),
+            array(
+                'methods' => 'POST',
+                'callback' => array($this, 'admin_settings_post_route'),
+                'permission_callback' => function () {
+                    return current_user_can('manage_options');
+                },
+            ),
+        ));
+
+    }
+
+    public function admin_settings_get_route()
+    {
+        $data = get_option($this->plugin_name . 'settings');
+        return $data;
+    }
+
+    public function admin_settings_post_route(WP_REST_Request $request)
+    {
+
+        //Get react data
+        $data = $request->get_json_params();
+        if (!$data) {
+            return false;
+        }
+
+        update_option($this->plugin_name . 'settings', $data);
+        $data = get_option($this->plugin_name . 'settings');
+        return $data;
     }
 
 }
