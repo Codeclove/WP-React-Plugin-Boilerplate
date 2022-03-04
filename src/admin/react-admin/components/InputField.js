@@ -14,7 +14,7 @@ export default function InputField({
       name={slug}
       label={label}
       onKeyUp={inputHandler}
-      defaultValue={settings[slug]}
+      defaultValue={settings[slug] ? settings[slug] : ''}
       margin="normal"
       fullWidth
     />

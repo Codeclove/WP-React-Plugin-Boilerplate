@@ -17,7 +17,7 @@ export default function SelectField({
         name={slug}
         labelId={`${slug}-label`}
         id={`${slug}-select`}
-        value={settings[slug]}
+        value={settings[slug] ? settings[slug] : ''}
         label={label}
         onChange={selectHandler}
       >

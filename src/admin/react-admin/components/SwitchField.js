@@ -13,7 +13,7 @@ export default function SwitchField({
       control={
         <Switch
           name={slug}
-          checked={settings[slug]}
+          checked={settings[slug] ? settings[slug] : false}
           onChange={switchHandler}
           inputProps={{ 'aria-label': 'controlled' }}
         />

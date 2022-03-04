@@ -126,8 +126,8 @@ class Test_Plugin_Admin
 
         add_submenu_page(
             'edit.php?post_type=custom-posts',
-            __('Books Shortcode Reference', 'textdomain'),
-            __('Názov submenu', 'textdomain'),
+            __('Page title', 'test-plugin'),
+            __('Submenu name', 'test-plugin'),
             'manage_options',
             'react-settings',
         );
@@ -137,8 +137,8 @@ class Test_Plugin_Admin
          */
 
         add_menu_page(
-            'React settings', //Page title
-            'React settings', //Menu title
+            __('React settings', 'test-plugin'), //Page title
+            __('React settings', 'test-plugin'), //Menu title
             'manage_options',
             'react-settings',
             function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';},
@@ -155,6 +155,7 @@ class Test_Plugin_Admin
                 'permission_callback' => function () {
                     return current_user_can('manage_options');
                 },
+        
             ),
             array(
                 'methods' => 'POST',
@@ -162,6 +163,7 @@ class Test_Plugin_Admin
                 'permission_callback' => function () {
                     return current_user_can('manage_options');
                 },
+   
             ),
         ));
 
@@ -170,6 +172,11 @@ class Test_Plugin_Admin
     public function admin_settings_get_route()
     {
         $data = get_option($this->plugin_name . 'settings');
+  
+        if(!$data) {
+            $data = "empty";
+        }
+      
         return $data;
     }
 

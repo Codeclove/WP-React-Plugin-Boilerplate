@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: `http://plugins.local`,
+  baseURL: `${window.location.origin}/wp-json/`,
 });

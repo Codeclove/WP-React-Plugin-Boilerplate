@@ -167,7 +167,7 @@ class Test_Plugin {
 
 
 		//Custom post type
-		//$this->loader->add_action('init', $plugin_admin, 'register_cpt');
+		$this->loader->add_action('init', $plugin_admin, 'register_cpt');
 		//Settings page
 		$this->loader->add_action('_admin_menu', $plugin_admin, 'add_menu_item');
 		//Register endpoints

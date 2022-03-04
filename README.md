@@ -8,7 +8,10 @@ This repository is based on [DevinVinson Boilerplate](https://github.com/DevinVi
 
 ## Instalation
 Rename files from plugin-name to example-me
-change `plugin_name` to `example_me`
-change `plugin-name to example-me`
-change `Plugin_Name to Example_Me`
-change `PLUGIN_NAME_ to EXAMPLE_ME_`
+- change `plugin_name` to `example_me`
+- change `plugin-name to example-me`
+- change `Plugin_Name to Example_Me`
+- change `PLUGIN_NAME_ to EXAMPLE_ME_`
+
+## Settings
+

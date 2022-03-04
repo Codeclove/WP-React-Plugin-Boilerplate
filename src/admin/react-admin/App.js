@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
-
 import useFetch from './hooks/useFetch';
 import './scss/react-admin.scss';
 import InputField from './components/InputField';
@@ -13,7 +12,7 @@ import headers from '../../services/headers';
 
 export default function App() {
   const [data, fetchData] = useFetch(
-    'wp-json/test-plugin/v1/admin-settings',
+    'test-plugin/v1/admin-settings',
     'get',
     { headers: headers() },
   );
@@ -47,12 +46,9 @@ export default function App() {
   };
 
   const submitHandler = () => {
-    fetchData(
-      'wp-json/test-plugin/v1/admin-settings',
-      'post',
-      settings,
-      { headers: headers() },
-    );
+    fetchData('test-plugin/v1/admin-settings', 'post', settings, {
+      headers: headers(),
+    });
   };
 
   return (
