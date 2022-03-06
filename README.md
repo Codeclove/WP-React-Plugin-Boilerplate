@@ -1,4 +1,4 @@
-# WP PLUGIN BOILERPLATE
+# WP REACT PLUGIN BOILERPLATE
 This repository is based on [DevinVinson Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate)
 
 ## Features
@@ -6,7 +6,7 @@ This repository is based on [DevinVinson Boilerplate](https://github.com/DevinVi
 - WP REST API
 - Webpack with React support
 
-## Instalation
+## Installation
 Rename files from plugin-name to example-me
 - change `plugin_name` to `example_me`
 - change `plugin-name to example-me`
