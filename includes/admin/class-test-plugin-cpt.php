@@ -41,7 +41,7 @@ if (!class_exists('\\TestPlugin\\CPT')) {
                 'hierarchical' => false,
                 'show_ui' => true,
                 'show_in_nav_menus' => true,
-                'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+                'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
                 'has_archive' => true,
                 'rewrite' => true,
                 'query_var' => true,
@@ -79,6 +79,7 @@ if (!class_exists('\\TestPlugin\\CPT')) {
                     'menu_name' => __('Breed', 'test-plugin'),
                 ),
                 'show_in_rest' => true,
+             
                 'rest_base' => 'breed',
                 'rest_controller_class' => 'WP_REST_Terms_Controller',
             ));

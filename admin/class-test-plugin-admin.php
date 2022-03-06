@@ -117,6 +117,20 @@ class Test_Plugin_Admin
         $cpt->init();
     }
 
+    public function register_cpt_metas()
+    {
+
+        $args = array(
+            array(
+                'meta_key' => 'new_meta',
+                'type' => 'string',
+            ),
+        );
+
+        $cpt_metas = new TestPlugin\PostMetas('custom-posts', 'Metas for custom posts');
+        $cpt_metas->register_metas($args);
+
+    }
     public function add_menu_item()
     {
 
@@ -155,7 +169,7 @@ class Test_Plugin_Admin
                 'permission_callback' => function () {
                     return current_user_can('manage_options');
                 },
-        
+
             ),
             array(
                 'methods' => 'POST',
@@ -163,7 +177,7 @@ class Test_Plugin_Admin
                 'permission_callback' => function () {
                     return current_user_can('manage_options');
                 },
-   
+
             ),
         ));
 
@@ -172,11 +186,11 @@ class Test_Plugin_Admin
     public function admin_settings_get_route()
     {
         $data = get_option($this->plugin_name . 'settings');
-  
-        if(!$data) {
+
+        if (!$data) {
             $data = "empty";
         }
-      
+
         return $data;
     }
 

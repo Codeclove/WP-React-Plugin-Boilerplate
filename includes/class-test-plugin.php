@@ -123,12 +123,14 @@ class Test_Plugin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-test-plugin-public.php';
 
 
-		//Classes
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-cpt.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-menu.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-submenu.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-menu-tabs.php';
+		//Admin Classes
+	
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/admin/class-test-plugin-cpt.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/admin/class-test-plugin-post-metas.php';
+		
+		//Public Classes
+	
+		
 
 		$this->loader = new Test_Plugin_Loader();
 
@@ -168,6 +170,7 @@ class Test_Plugin {
 
 		//Custom post type
 		$this->loader->add_action('init', $plugin_admin, 'register_cpt');
+		$this->loader->add_action('init', $plugin_admin, 'register_cpt_metas');
 		//Settings page
 		$this->loader->add_action('_admin_menu', $plugin_admin, 'add_menu_item');
 		//Register endpoints
