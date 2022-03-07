@@ -107,6 +107,7 @@ class Test_Plugin_Admin
             'root' => esc_url_raw(rest_url()),
             'nonce' => wp_create_nonce('wp_rest'),
             'user' => wp_get_current_user(),
+            'post_id' => get_the_ID(),
         ));
 
     }
@@ -117,6 +118,11 @@ class Test_Plugin_Admin
         $cpt->init();
     }
 
+    public function register_metaboxes()
+    {
+        $metabox = new TestPlugin\Meta_Box(['custom-posts'], 'Metabox title');
+        $metabox->add();
+    }
     public function register_cpt_metas()
     {
 
@@ -131,6 +137,7 @@ class Test_Plugin_Admin
         $cpt_metas->register_metas($args);
 
     }
+
     public function add_menu_item()
     {
 
@@ -181,6 +188,15 @@ class Test_Plugin_Admin
             ),
         ));
 
+        //Media upload
+        register_rest_route($this->plugin_name . '/v1', '/media', array(
+            'methods' => 'POST',
+            'callback' => array($this, 'upload_custom_media'),
+            'permission_callback' => function () {
+                return current_user_can('manage_options');
+            },
+        ));
+
     }
 
     public function admin_settings_get_route()
@@ -206,6 +222,32 @@ class Test_Plugin_Admin
         update_option($this->plugin_name . 'settings', $data);
         $data = get_option($this->plugin_name . 'settings');
         return $data;
+    }
+
+    /**
+     * Upload media to custom directory
+     *
+     * @param array $request parameters
+     * @return string|null Object about media
+     */
+    public function upload_custom_media(WP_REST_Request $request)
+    {
+        global $post;
+        $files = $request->get_file_params();
+        $post_id = $request->get_param('post_id');
+      
+  
+
+      
+        
+        $upload_media = new TestPlugin\UploadMedia($files, $post_id, 'folder_name2');
+        //Change uploads directory
+        add_filter('upload_dir', array($upload_media, 'change_uploads_dir'));
+        $response = $upload_media->upload();
+         //Change upload directory to default
+        remove_filter('upload_dir', array($upload_media, 'change_uploads_dir'));
+        return $response;
+
     }
 
 }

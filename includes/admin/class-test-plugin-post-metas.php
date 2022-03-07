@@ -12,8 +12,8 @@ if (!class_exists('\\TestPlugin\\PostMetas')) {
      */
     class PostMetas
     {
-        public $object_type = 'post';
-        public $meta_args = array( // Validate and sanitize the meta value.
+        private $object_type = 'post';
+        private $meta_args = array( // Validate and sanitize the meta value.
             // Note: currently (4.7) one of 'string', 'boolean', 'integer',
             // 'number' must be used as 'type'. The default is 'string'.
             'type' => 'string',

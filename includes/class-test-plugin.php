@@ -124,9 +124,13 @@ class Test_Plugin {
 
 
 		//Admin Classes
-	
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/admin/class-test-plugin-cpt.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/admin/class-test-plugin-post-metas.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/admin/class-test-plugin-meta-box.php';
+
+		
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-test-plugin-upload-media.php';
 		
 		//Public Classes
 	
@@ -175,6 +179,8 @@ class Test_Plugin {
 		$this->loader->add_action('_admin_menu', $plugin_admin, 'add_menu_item');
 		//Register endpoints
 		$this->loader->add_action('rest_api_init', $plugin_admin, 'register_endpoints');
+		//Register cpt metaboxes
+		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'register_metaboxes' );
 
 	}
 
