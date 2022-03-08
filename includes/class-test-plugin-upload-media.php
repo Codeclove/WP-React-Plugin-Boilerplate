@@ -19,13 +19,19 @@ if (!class_exists('\\TestPlugin\\UploadMedia')) {
         public $custom_dir;
         public $response = [];
 
-        public function __construct($files, $post_id, $custom_dir)
+        /**
+         * __construct
+         *
+         * @param  array $files
+         * @param  integer $post_id
+         * @param  string|null $custom_dir
+         * @return void
+         */
+        public function __construct($files, $post_id, $custom_dir = null)
         {
-
             $this->files = $files;
             $this->post_id = $post_id;
             $this->custom_dir = $custom_dir;
-
         }
 
         public function change_uploads_dir($dir_data)
@@ -37,8 +43,18 @@ if (!class_exists('\\TestPlugin\\UploadMedia')) {
             return $dir_data;
         }
 
+        /**
+         * Upload files
+         *
+         * @return array|object - uploaded files / WP_error
+         */
         public function upload()
         {
+
+            if (isset($this->custom_dir)) {
+                //Change uploads directory
+                add_filter('upload_dir', array($this, 'change_uploads_dir'));
+            }
 
             foreach ($this->files as $file_key => $file_value) {
 
@@ -50,12 +66,25 @@ if (!class_exists('\\TestPlugin\\UploadMedia')) {
                         require_once ABSPATH . "wp-admin" . '/includes/media.php';
                     }
 
+                    error_log(print_r($file_value, true));
+
                     if ($file_value) {
-                        $this->response[$file_key]['media_id'] = $newupload = media_handle_upload($file_key, $this->post_id);
-                        $this->response[$file_key]['media_url'] = $attachment_url = wp_get_attachment_url($newupload);
+                        $newupload = media_handle_upload($file_key, $this->post_id);
+                        $attachment_url = wp_get_attachment_url($newupload);
+
+                        if (is_wp_error($newupload)) {
+                            return $newupload;
+                        }
+
+                        $this->response[$file_key]['media_id'] = $newupload;
+                        $this->response[$file_key]['media_url'] = $attachment_url;
                     }
                 }
 
+            }
+            if (isset($this->custom_dir)) {
+                //Change upload directory to default
+                remove_filter('upload_dir', array($this, 'change_uploads_dir'));
             }
 
             return $this->response;

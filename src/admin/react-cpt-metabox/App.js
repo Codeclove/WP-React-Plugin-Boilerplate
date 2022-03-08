@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
 import useFetch from './hooks/useFetch';
@@ -8,10 +8,15 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import headers from '../../services/headers';
 import UploadField from './components/UploadField';
+import NotificationMessage from './components/NotificationMessage';
 
 const ID = wpApiSettings.post_id;
 
 export default function App() {
+  const [message, setMessage] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [files, uploadFiles] = useFetch(null);
+  const [metaData, setMetaData] = useState(null);
   const [data, fetchData] = useFetch(
     `wp/v2/custom-posts/${ID}`,
     'get',
@@ -20,7 +25,7 @@ export default function App() {
     },
   );
 
-  const [metaData, setMetaData] = useState(null);
+  const inputEl = useRef(null);
 
   useEffect(() => {
     if (data.data) {
@@ -28,7 +33,14 @@ export default function App() {
     }
   }, [data]);
 
-  console.log(metaData);
+  const fileHandler = (e) => {
+    const { files } = e.target;
+    const filesArray = [];
+    for (let i = 0; i < files.length; i++) {
+      filesArray.push(files[i]);
+    }
+    setSelectedFiles(filesArray);
+  };
 
   const inputHandler = (e) => {
     setMetaData((prevState) => ({
@@ -37,17 +49,64 @@ export default function App() {
     }));
   };
 
-  const submitHandler = () => {
+  const submitFiles = async () => {
+    const files = selectedFiles;
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append(`file_${i}`, files[i]);
+    }
+    return await uploadFiles(
+      'test-plugin/v1/media',
+      'post',
+      formData,
+      {
+        headers: headers(),
+      },
+    );
+  };
+
+  function resetHandler() {
+    if (inputEl.current.value) {
+      setSelectedFiles([]);
+      inputEl.current.value = null;
+    }
+  }
+
+  const submitData = async () => {
     const data = {
       meta: metaData,
     };
-    fetchData(`wp/v2/custom-posts/${ID}`, 'post', data, {
+    return await fetchData(`wp/v2/custom-posts/${ID}`, 'post', data, {
       headers: headers(),
     });
   };
 
+  const submitHandler = async () => {
+    setMessage(null);
+    if (selectedFiles.length !== 0) {
+      const uplodedResponse = await submitFiles();
+      if (uplodedResponse.error) {
+        setMessage({ type: 'error', text: uplodedResponse.error });
+        return;
+      }
+    }
+
+    const submitResponse = await submitData();
+
+    if (submitResponse.error) {
+      setMessage({ type: 'error', text: submitResponse.error });
+    } else {
+      setMessage({
+        type: 'success',
+        text: 'Data has been sucessfully saved.',
+      });
+      resetHandler();
+    }
+  };
+
   return (
     <div id="admin-settings-form">
+      {message && <NotificationMessage message={message} />}
       {!metaData && (
         <Box sx={{ width: '100%' }}>
           <LinearProgress />
@@ -64,12 +123,17 @@ export default function App() {
             />
           </div>
           <div className="form-row">
-            <UploadField />
+            <UploadField
+              fileHandler={fileHandler}
+              selectedFiles={selectedFiles}
+              resetHandler={resetHandler}
+              inputEl={inputEl}
+            />
           </div>
           <LoadingButton
             color="primary"
             onClick={submitHandler}
-            loading={data.loading}
+            loading={data.loading || files.loading}
             loadingPosition="start"
             startIcon={<SaveIcon />}
             variant="contained"

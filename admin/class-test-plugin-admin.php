@@ -216,12 +216,14 @@ class Test_Plugin_Admin
         //Get react data
         $data = $request->get_json_params();
         if (!$data) {
-            return false;
+            return new WP_Error( 'no_posts', __('No post found'), array( 'status' => 404 ) );
         }
 
         update_option($this->plugin_name . 'settings', $data);
         $data = get_option($this->plugin_name . 'settings');
+
         return $data;
+
     }
 
     /**
@@ -235,17 +237,10 @@ class Test_Plugin_Admin
         global $post;
         $files = $request->get_file_params();
         $post_id = $request->get_param('post_id');
-      
-  
 
-      
-        
-        $upload_media = new TestPlugin\UploadMedia($files, $post_id, 'folder_name2');
-        //Change uploads directory
-        add_filter('upload_dir', array($upload_media, 'change_uploads_dir'));
+        $upload_media = new TestPlugin\UploadMedia($files, $post_id, 'priecinok');
         $response = $upload_media->upload();
-         //Change upload directory to default
-        remove_filter('upload_dir', array($upload_media, 'change_uploads_dir'));
+
         return $response;
 
     }
