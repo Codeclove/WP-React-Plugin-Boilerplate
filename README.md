@@ -5,6 +5,7 @@ This repository is based on [DevinVinson Boilerplate](https://github.com/DevinVi
 - OOP design
 - WP REST API
 - Webpack with React support
+- Material UI
 
 ## Installation
 Rename files from plugin-name to example-me
@@ -13,8 +14,8 @@ Rename files from plugin-name to example-me
 - change `Plugin_Name to Example_Me`
 - change `PLUGIN_NAME_ to EXAMPLE_ME_`
 
-## Setting
-Add info.
+## Settings
+Edit backend and react files according to your needs. 
 
 ## Internationalization
 1. [Generate](https://developer.wordpress.org/cli/commands/i18n/make-pot/) `.pot` file: `wp i18n make-pot PATH-TO-DIRECTORY PATH-TO-POT-FILE --exclude=assets`
