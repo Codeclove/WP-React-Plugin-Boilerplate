@@ -1,0 +1,250 @@
+# Copyright (C) 2022 Marek Chrást
+# This file is distributed under the same license as the Test plugin plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Test plugin 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/test-plugin\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-03-09T10:39:46+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: test-plugin\n"
+
+#. Plugin Name of the plugin
+msgid "Test plugin"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "www.codeli.sk"
+msgstr ""
+
+#. Description of the plugin
+msgid "This is a short description of what the plugin does. It's displayed in the WordPress admin area."
+msgstr ""
+
+#. Author of the plugin
+msgid "Marek Chrást"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "marek@codeli.sk"
+msgstr ""
+
+#: admin/class-test-plugin-admin.php:112
+msgid "Meta label"
+msgstr ""
+
+#: admin/class-test-plugin-admin.php:113
+msgid "Other name"
+msgstr ""
+
+#: admin/class-test-plugin-admin.php:127
+msgid "Metabox title"
+msgstr ""
+
+#: admin/class-test-plugin-admin.php:154
+msgid "Page title"
+msgstr ""
+
+#: admin/class-test-plugin-admin.php:155
+msgid "Submenu name"
+msgstr ""
+
+#: admin/class-test-plugin-admin.php:165
+#: admin/class-test-plugin-admin.php:166
+msgid "React settings"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:26
+#: includes/admin/class-test-plugin-cpt.php:38
+msgid "Custom posts"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:27
+msgid "Custom post"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:28
+msgid "All custom posts"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:29
+msgid "New posts"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:30
+msgid "Add New"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:31
+msgid "Add New custom Post"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:32
+msgid "Edit custom post"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:33
+msgid "View custom post"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:34
+msgid "Search custom posts"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:35
+msgid "No custom posts found"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:36
+msgid "No custom posts found in trash"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:37
+msgid "Parent custom posts"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:64
+#: includes/admin/class-test-plugin-cpt.php:79
+msgid "Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:65
+msgctxt "taxonomy general name"
+msgid "Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:66
+msgid "Search Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:67
+msgid "Popular Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:68
+msgid "All Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:69
+msgid "Parent Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:70
+msgid "Parent Breed:"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:71
+msgid "Edit Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:72
+msgid "Update Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:73
+#: includes/admin/class-test-plugin-cpt.php:74
+msgid "New Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:75
+msgid "Separate Breed with commas"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:76
+msgid "Add or remove Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:77
+msgid "Choose from the most used Breed"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:78
+msgid "No Breed found."
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:96
+msgctxt "Taxonomy General Name"
+msgid "Sponsors"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:97
+msgctxt "Taxonomy Singular Name"
+msgid "Sponsor"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:98
+msgid "Sponsors"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:99
+msgid "All Sponsors"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:100
+msgid "Parent Sponsor"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:101
+msgid "Parent Sponsor:"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:102
+msgid "New Sponsor Name"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:103
+msgid "Add New Sponsor"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:104
+msgid "Edit Sponsor"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:105
+msgid "Update Sponsor"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:106
+msgid "View Sponsor"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:107
+msgid "Separate Sponsors with commas"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:108
+msgid "Add or remove Sponsors"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:109
+msgid "Choose from the most used"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:110
+msgid "Popular Sponsors"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:111
+msgid "Search Sponsors"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:112
+msgid "Not Found"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:113
+msgid "No Sponsors"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:114
+msgid "Sponsors list"
+msgstr ""
+
+#: includes/admin/class-test-plugin-cpt.php:115
+msgid "Sponsors list navigation"
+msgstr ""

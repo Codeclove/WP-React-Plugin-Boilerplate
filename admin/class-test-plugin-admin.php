@@ -108,6 +108,10 @@ class Test_Plugin_Admin
             'nonce' => wp_create_nonce('wp_rest'),
             'user' => wp_get_current_user(),
             'post_id' => get_the_ID(),
+            't' => array(
+                'meta_label' => __('Meta label', 'test-plugin'),
+                'other_name' => __('Other name', 'test-plugin'),
+            )
         ));
 
     }
@@ -120,7 +124,7 @@ class Test_Plugin_Admin
 
     public function register_metaboxes()
     {
-        $metabox = new TestPlugin\Meta_Box(['custom-posts'], 'Metabox title');
+        $metabox = new TestPlugin\Meta_Box(['custom-posts'], __('Metabox title', 'test-plugin'));
         $metabox->add();
     }
     public function register_cpt_metas()
@@ -221,7 +225,6 @@ class Test_Plugin_Admin
 
         update_option($this->plugin_name . 'settings', $data);
         $data = get_option($this->plugin_name . 'settings');
-
         return $data;
 
     }

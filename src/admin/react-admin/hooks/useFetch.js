@@ -21,20 +21,24 @@ function useFetch(url, method, bodyData, config) {
         error: '',
       }));
 
-      // FOR TESTING PURPOSES
-      await new Promise((r) => setTimeout(r, 2000));
       const { data } = await RestApi[fetchMethod](
         fetchUrl,
         fetchBody,
         fetchConfig,
       );
-      setResponse({ data, loading: false, error: '' });
+      setResponse({ data, loading: false, error: false });
+      return { data, loading: false, error: false };
     } catch (err) {
       setResponse({
         data: '',
         loading: false,
         error: err,
       });
+      return {
+        data: '',
+        loading: false,
+        error: err.response.data.message,
+      };
     }
   };
 
@@ -45,10 +49,6 @@ function useFetch(url, method, bodyData, config) {
   }, [url]);
 
   return [response, fetchData];
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export default useFetch;
