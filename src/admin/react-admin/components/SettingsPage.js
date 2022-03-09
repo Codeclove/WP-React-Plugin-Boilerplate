@@ -48,6 +48,7 @@ export default function SettingsPage() {
   };
 
   const submitHandler = async () => {
+    setMessage(null);
     const submitResponse = await fetchData(
       'test-plugin/v1/admin-settings',
       'post',
@@ -69,8 +70,7 @@ export default function SettingsPage() {
 
   return (
     <div id="admin-settings-form">
-      {message && <Message message={message}>{message.text}</Message>}
-
+      <Message message={message} />
       {!settings && (
         <Box sx={{ width: '100%' }}>
           <LinearProgress />

@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
 import headers from '../../../services/headers';
-import NotificationMessage from './NotificationMessage';
 import UploadField from './UploadField';
 import InputField from './InputField';
 import useFetch from '../hooks/useFetch';
 import LinerProgressBar from './LinerProgressBar';
+import Message from './Message';
 
 const ID = wpApiSettings.post_id;
 
@@ -104,7 +104,7 @@ export default function MetaboxPage() {
 
   return (
     <div id="admin-settings-form">
-      {message && <NotificationMessage message={message} />}
+      <Message message={message} />
       {!metaData && <LinerProgressBar />}
       {metaData && (
         <>

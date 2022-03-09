@@ -13,5 +13,12 @@ Rename files from plugin-name to example-me
 - change `Plugin_Name to Example_Me`
 - change `PLUGIN_NAME_ to EXAMPLE_ME_`
 
-## Settings
+## Setting
+Add info.
+
+## Internationalization
+1. Generate `.pot` file:
+`wp i18n make-pot wp-content/plugins/test-plugin wp-content/plugins/test-plugin/languages/test-plugin.pot --exclude=assets`
+2. Translate file in Poedit or other editor and save as `test-plugin-sk_SK`.
+3. Generated .mo and .po file put in the language folder. 
 

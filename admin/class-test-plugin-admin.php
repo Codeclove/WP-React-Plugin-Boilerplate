@@ -220,11 +220,12 @@ class Test_Plugin_Admin
         //Get react data
         $data = $request->get_json_params();
         if (!$data) {
-            return new WP_Error( 'no_posts', __('No post found'), array( 'status' => 404 ) );
+            return new WP_Error( 'no_data', __('No data found'), array( 'status' => 404 ) );
         }
 
-        update_option($this->plugin_name . 'settings', $data);
+        $updated = update_option($this->plugin_name . 'settings', $data);
         $data = get_option($this->plugin_name . 'settings');
+      
         return $data;
 
     }
