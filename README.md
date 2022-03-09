@@ -17,8 +17,8 @@ Rename files from plugin-name to example-me
 Add info.
 
 ## Internationalization
-1. Generate `.pot` file:
+1. Generate `.pot` file [source] (https://developer.wordpress.org/cli/commands/i18n/make-pot/):
 `wp i18n make-pot wp-content/plugins/test-plugin wp-content/plugins/test-plugin/languages/test-plugin.pot --exclude=assets`
 2. Translate file in Poedit or other editor and save as `test-plugin-sk_SK`.
-3. Generated .mo and .po file put in the language folder. 
+3. Generated .mo / .po file and put it in the language folder. 
 
