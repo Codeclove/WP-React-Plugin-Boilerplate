@@ -54,8 +54,9 @@ if (!class_exists('\\TestPlugin\\PostMetas')) {
             $meta_args = $this->meta_args;
 
             foreach ($args as $single_meta_args) {
-                $meta_args['type'] = $single_meta_args['type'];
                 $meta_key = $single_meta_args['meta_key'];
+                $meta_args['type'] = $single_meta_args['type'];
+                $meta_args['show_in_rest'] = isset($single_meta_args['show_in_rest']) ? $single_meta_args['show_in_rest'] : true;
                 register_meta($this->object_type, $meta_key, $meta_args);
             }
 

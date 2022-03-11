@@ -66,18 +66,22 @@ if (!class_exists('\\TestPlugin\\UploadMedia')) {
                         require_once ABSPATH . "wp-admin" . '/includes/media.php';
                     }
 
-                    error_log(print_r($file_value, true));
+      
 
                     if ($file_value) {
                         $newupload = media_handle_upload($file_key, $this->post_id);
                         $attachment_url = wp_get_attachment_url($newupload);
+                        $attachment_thumb_url = wp_attachment_is_image($newupload) ? wp_get_attachment_thumb_url($newupload) : 'file';
 
                         if (is_wp_error($newupload)) {
                             return $newupload;
                         }
 
-                        $this->response[$file_key]['media_id'] = $newupload;
-                        $this->response[$file_key]['media_url'] = $attachment_url;
+                        $this->response[] = array(
+                            'media_id' => $newupload,
+                            'media_url'=> $attachment_url,
+                            'media_thumb_url' => $attachment_thumb_url
+                        );
                     }
                 }
 

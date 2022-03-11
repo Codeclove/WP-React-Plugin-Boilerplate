@@ -7,13 +7,21 @@ import InputField from './InputField';
 import useFetch from '../hooks/useFetch';
 import LinerProgressBar from './LinerProgressBar';
 import Message from './Message';
+import MediaGallery from './MediaGallery';
 
 const ID = wpApiSettings.post_id;
 
 export default function MetaboxPage() {
   const [message, setMessage] = useState(null);
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const [files, uploadFiles] = useFetch(null);
+  const [selectedMedia, setSelectedMedia] = useState([]);
+  const [uploadedMedia, uploadMedia] = useFetch();
+  const [media, getMedia] = useFetch(
+    `wp/v2/media?parent=${ID}&per_page=100`,
+    'get',
+    {
+      headers: headers(),
+    },
+  );
   const [metaData, setMetaData] = useState(null);
   const [data, fetchData] = useFetch(
     `wp/v2/custom-posts/${ID}`,
@@ -37,7 +45,7 @@ export default function MetaboxPage() {
     for (let i = 0; i < files.length; i++) {
       filesArray.push(files[i]);
     }
-    setSelectedFiles(filesArray);
+    setSelectedMedia(filesArray);
   };
 
   const inputHandler = (e) => {
@@ -47,49 +55,75 @@ export default function MetaboxPage() {
     }));
   };
 
-  const submitFiles = async () => {
-    const files = selectedFiles;
+  function resetHandler() {
+    if (inputEl.current.value) {
+      setSelectedMedia([]);
+      inputEl.current.value = null;
+    }
+  }
+
+  const submitMedia = async () => {
+    const files = selectedMedia;
+
+    if (selectedMedia.length === 0) {
+      return null;
+    }
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
       formData.append(`file_${i}`, files[i]);
     }
-    return await uploadFiles(
-      'test-plugin/v1/media',
+
+    formData.append(`post_id`, ID);
+    const response = await uploadMedia(
+      `test-plugin/v1/media`,
       'post',
       formData,
       {
         headers: headers(),
       },
     );
-  };
 
-  function resetHandler() {
-    if (inputEl.current.value) {
-      setSelectedFiles([]);
-      inputEl.current.value = null;
+    if (response.error) {
+      setMessage({ type: 'error', text: uplodedResponse.error });
+      return false;
     }
-  }
 
-  const submitData = async () => {
-    const data = {
-      meta: metaData,
-    };
-    return await fetchData(`wp/v2/custom-posts/${ID}`, 'post', data, {
-      headers: headers(),
-    });
+    const media = await getMedia(
+      `wp/v2/media?parent=${ID}&per_page=100`,
+      'get',
+      {
+        headers: headers(),
+      },
+    );
+
+    if (media.error) {
+      setMessage({ type: 'error', text: media.error });
+      return false;
+    }
+
+    return response;
   };
+
+  const submitData = async () =>
+    await fetchData(
+      `wp/v2/custom-posts/${ID}`,
+      'post',
+      { meta: metaData },
+      {
+        headers: headers(),
+      },
+    );
 
   const submitHandler = async () => {
     setMessage(null);
-    if (selectedFiles.length !== 0) {
-      const uplodedResponse = await submitFiles();
-      if (uplodedResponse.error) {
-        setMessage({ type: 'error', text: uplodedResponse.error });
-        return;
-      }
+
+    const uplodedResponse = await submitMedia();
+
+    if (uplodedResponse === false) {
+      return;
     }
 
-    const submitResponse = await submitData();
+    const submitResponse = await submitData(uplodedResponse);
 
     if (submitResponse.error) {
       setMessage({ type: 'error', text: submitResponse.error });
@@ -119,15 +153,16 @@ export default function MetaboxPage() {
           <div className="form-row">
             <UploadField
               fileHandler={fileHandler}
-              selectedFiles={selectedFiles}
+              selectedFiles={selectedMedia}
               resetHandler={resetHandler}
               inputEl={inputEl}
             />
           </div>
+          <MediaGallery media={media} />
           <LoadingButton
             color="primary"
             onClick={submitHandler}
-            loading={data.loading || files.loading}
+            loading={data.loading || uploadedMedia.loading}
             loadingPosition="start"
             startIcon={<SaveIcon />}
             variant="contained"

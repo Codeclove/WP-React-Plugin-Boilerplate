@@ -20,5 +20,5 @@ Edit backend and react files according to your needs.
 ## Internationalization
 1. [Generate](https://developer.wordpress.org/cli/commands/i18n/make-pot/) `.pot` file: `wp i18n make-pot PATH-TO-DIRECTORY PATH-TO-POT-FILE --exclude=assets`
 2. Translate file in Poedit or other editor and save as `test-plugin-sk_SK`.
-3. Generated .mo / .po file and put it in the language folder. 
+3. Generated .mo / .po file and it in the language folder. 
 
