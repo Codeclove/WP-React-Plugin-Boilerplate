@@ -26,6 +26,7 @@ function useFetch(url, method, bodyData, config) {
         fetchBody,
         fetchConfig,
       );
+
       setResponse({ data, loading: false, error: false });
       return { data, loading: false, error: false };
     } catch (err) {
