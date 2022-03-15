@@ -9,10 +9,10 @@ This repository is based on [DevinVinson Boilerplate](https://github.com/DevinVi
 
 ## Installation
 Rename files from plugin-name to example-me
-- change `plugin_name` to `example_me`
-- change `plugin-name to example-me`
-- change `Plugin_Name to Example_Me`
-- change `PLUGIN_NAME_ to EXAMPLE_ME_`
+- change `test_plugin` to `example_me`
+- change `test-plugin to example-me`
+- change `Test_Plugin to Example_Me`
+- change `TEST_PLUGIN_ to EXAMPLE_ME_`
 
 ## Settings
 Edit backend and react files according to your needs. 
