@@ -155,19 +155,20 @@ class Test_Plugin_Admin
             __('Submenu name', 'test-plugin'),
             'manage_options',
             'react-settings',
+            function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';},
         );
 
         /**
          * Add the top level menu page.
          */
 
-        add_menu_page(
-            __('React settings', 'test-plugin'), //Page title
-            __('React settings', 'test-plugin'), //Menu title
-            'manage_options',
-            'react-settings',
-            function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';},
-        );
+        // add_menu_page(
+        //     __('React settings', 'test-plugin'), //Page title
+        //     __('React settings', 'test-plugin'), //Menu title
+        //     'manage_options',
+        //     'react-settings',
+        //     function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';},
+        // );
 
     }
 
