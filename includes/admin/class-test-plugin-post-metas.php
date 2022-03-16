@@ -1,11 +1,11 @@
 <?php
-namespace TestPlugin;
+namespace Test_Plugin;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\TestPlugin\\PostMetas')) {
+if (!class_exists('\\Test_Plugin\\PostMetas')) {
 
     /**
      * PostMetas - regitster metas for custom post type object. To show metas in rest output custom post type must support 'Custom-fields'.

@@ -34,11 +34,6 @@ function useFetch(url, method, bodyData, config) {
         loading: false,
         error: err,
       });
-      console.log({
-        data: '',
-        loading: false,
-        error: err,
-      });
       return {
         data: '',
         loading: false,

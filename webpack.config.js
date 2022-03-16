@@ -10,11 +10,11 @@ const config = require('./config');
 const options = {
   extensions: [`js`, `jsx`, 'ts', 'tsx'],
   fix: true,
-
   overrideConfig: {
     parser: '@babel/eslint-parser',
     parserOptions: {
       requireConfigFile: false,
+      test: /\.(js|ts|tsx)$/,
       babelOptions: {
         presets: ['@babel/preset-react'],
       },
@@ -23,15 +23,30 @@ const options = {
     //Pravidla su v subore .prettierrc
     rules: {
       'no-console': 'warn',
+      'import/no-extraneous-dependencies': 0,
+      'react/prop-types': 0,
       'prettier/prettier': ['error'],
+      'jsx-a11y/label-has-associated-control': [
+        'error',
+        {
+          required: {
+            some: ['nesting', 'id'],
+          },
+        },
+      ],
       'react/jsx-filename-extension': [
         1,
         { extensions: ['.js', '.jsx'] },
       ],
+      'react/jsx-props-no-spreading': 0,
+      'react/require-default-props': 0,
     },
     env: {
       browser: true,
       node: true,
+    },
+    globals: {
+      wpApiSettings: 'readonly',
     },
     extends: ['airbnb', 'prettier'],
   },

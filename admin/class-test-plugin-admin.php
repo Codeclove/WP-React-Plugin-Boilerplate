@@ -118,13 +118,13 @@ class Test_Plugin_Admin
 
     public function register_cpt()
     {
-        $cpt = new TestPlugin\CPT;
+        $cpt = new Test_Plugin\CPT;
         $cpt->init();
     }
 
     public function register_metaboxes()
     {
-        $metabox = new TestPlugin\Meta_Box(['custom-posts'], __('Metabox title', 'test-plugin'));
+        $metabox = new Test_Plugin\Meta_Box(['custom-posts'], __('Metabox title', 'test-plugin'));
         $metabox->add();
     }
     public function register_cpt_metas()
@@ -137,7 +137,7 @@ class Test_Plugin_Admin
             ),
         );
 
-        $cpt_metas = new TestPlugin\PostMetas('custom-posts', 'Metas for custom posts');
+        $cpt_metas = new Test_Plugin\PostMetas('custom-posts', 'Metas for custom posts');
         $cpt_metas->register_metas($args);
 
     }
@@ -243,7 +243,7 @@ class Test_Plugin_Admin
         $files = $request->get_file_params();
         $post_id = $request->get_param('post_id');
 
-        $upload_media = new TestPlugin\UploadMedia($files, $post_id, 'priecinok');
+        $upload_media = new Test_Plugin\UploadMedia($files, $post_id, 'priecinok');
         $response = $upload_media->upload();
 
         return $response;

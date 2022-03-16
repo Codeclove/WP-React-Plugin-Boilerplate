@@ -16,6 +16,7 @@ Rename files from plugin-name to example-me
 
 ## Settings
 Edit backend and react files according to your needs. 
+change url in config.js
 
 ## Internationalization
 1. [Generate](https://developer.wordpress.org/cli/commands/i18n/make-pot/) `.pot` file: `wp i18n make-pot PATH-TO-DIRECTORY PATH-TO-POT-FILE --exclude=assets`

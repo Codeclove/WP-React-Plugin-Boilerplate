@@ -1,5 +1,5 @@
 <?php
-namespace TestPlugin;
+namespace Test_Plugin;
 
 /**
  * File where we define CPT, Taxonomies etc.
@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\TestPlugin\\MetaBox')) {
+if (!class_exists('\\Test_Plugin\\MetaBox')) {
 
     class Meta_Box
     {

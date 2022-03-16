@@ -28,16 +28,6 @@ export default function MediaUploader({ setMessage }) {
     }
   }, [uploadedMedia]);
 
-  const fileHandler = (e) => {
-    const { files } = e.target;
-    const filesArray = [];
-    for (let i = 0; i < files.length; i++) {
-      filesArray.push(files[i]);
-    }
-
-    submitMedia(filesArray);
-  };
-
   const submitMedia = async (filesArray) => {
     const files = filesArray;
 
@@ -45,13 +35,13 @@ export default function MediaUploader({ setMessage }) {
       return null;
     }
     const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
+    for (let i = 0; i < files.length; i += 1) {
       formData.append(`file_${i}`, files[i]);
     }
 
-    formData.append(`post_id`, ID);
+    formData.append('post_id', ID);
     const res = await uploadMedia(
-      `test-plugin/v1/media`,
+      'test-plugin/v1/media',
       'post',
       formData,
       config,
@@ -68,7 +58,19 @@ export default function MediaUploader({ setMessage }) {
         text: 'Files has been sucessfully uploaded.',
       });
     }
+    return null;
   };
+
+  const fileHandler = (e) => {
+    const { files } = e.target;
+    const filesArray = [];
+    for (let i = 0; i < files.length; i += 1) {
+      filesArray.push(files[i]);
+    }
+
+    submitMedia(filesArray);
+  };
+
   return (
     <>
       <UploadField
@@ -78,8 +80,8 @@ export default function MediaUploader({ setMessage }) {
       <div className="media-gallery">
         {media.data && (
           <>
-            {media.data.map((m, i) => (
-              <MediaItem key={i} mediaData={m} />
+            {media.data.map((m) => (
+              <MediaItem key={m.id} mediaData={m} />
             ))}
           </>
         )}
