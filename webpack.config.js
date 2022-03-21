@@ -8,7 +8,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const config = require('./config');
 
 const options = {
-  extensions: [`js`, `jsx`, 'ts', 'tsx'],
+  extensions: [`js`, `jsx`, `ts`, `tsx`],
   fix: true,
   overrideConfig: {
     parser: '@babel/eslint-parser',
@@ -159,7 +159,7 @@ module.exports = {
 
   mode: 'development',
   //Enable read code for debugging
-  devtool: 'inline-source-map',
+  //devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'assets'),
     filename: 'js/[name].js',

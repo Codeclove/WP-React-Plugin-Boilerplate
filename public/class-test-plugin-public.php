@@ -102,17 +102,26 @@ class Test_Plugin_Public
 
         wp_enqueue_script($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/js/front.js', array('jquery'), $this->version, false);
 
+                //WP Rest Api data
+                wp_localize_script($this->plugin_name, 'wpApiSettings', array(
+                    'root' => esc_url_raw(rest_url()),
+                    'nonce' => wp_create_nonce('wp_rest'),
+                    'user' => wp_get_current_user(),
+                    'post_id' => get_the_ID(),
+                    't' => array(
+                        'meta_label' => __('Meta label', 'test-plugin'),
+                        'other_name' => __('Other name', 'test-plugin'),
+                    ),
+                ));
+
     }
 
     public function register_shortcodes()
     {
-
-        function react_front()
-        {
-
+        
+        add_shortcode('test-plugin-front', function() {
             return "<div id='react-front'></div>";
-        }
-        add_shortcode('react-shortcode', 'react_front');
+        });
     }
 
 }

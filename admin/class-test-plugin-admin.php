@@ -102,7 +102,7 @@ class Test_Plugin_Admin
 
         wp_enqueue_script($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/js/admin.js', array('jquery'), $this->version, false);
 
-        //WP rest api authentification
+        //WP Rest Api data
         wp_localize_script($this->plugin_name, 'wpApiSettings', array(
             'root' => esc_url_raw(rest_url()),
             'nonce' => wp_create_nonce('wp_rest'),
