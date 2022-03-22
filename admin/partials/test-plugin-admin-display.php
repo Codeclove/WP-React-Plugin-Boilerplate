@@ -15,4 +15,4 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <h1>React settings<h1>
-<div id="react-admin"></div>
+<div id="test-plugin-admin"></div>

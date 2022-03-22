@@ -11,16 +11,16 @@ import reactAdmin from './admin/react-admin/scss/react-admin.scss';
 import reactCptMetabox from './admin/react-cpt-metabox/scss/react-cpt-metabox.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('#react-admin')) {
+  if (document.querySelector('#test-plugin-admin')) {
     ReactDOM.render(
       <SettingsApp />,
-      document.querySelector('#react-admin'),
+      document.querySelector('#test-plugin-admin'),
     );
   }
-  if (document.querySelector('#react-cpt-metabox')) {
+  if (document.querySelector('#test-plugin-cpt-metabox')) {
     ReactDOM.render(
       <MetaboxApp />,
-      document.querySelector('#react-cpt-metabox'),
+      document.querySelector('#test-plugin-cpt-metabox'),
     );
   }
 });

@@ -120,7 +120,7 @@ class Test_Plugin_Public
     {
         
         add_shortcode('test-plugin-front', function() {
-            return "<div id='react-front'></div>";
+            return "<div id='test-plugin-front'></div>";
         });
     }
 

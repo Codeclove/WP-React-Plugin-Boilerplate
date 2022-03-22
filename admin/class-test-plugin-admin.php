@@ -129,7 +129,6 @@ class Test_Plugin_Admin
     }
     public function register_cpt_metas()
     {
-
         $args = array(
             array(
                 'meta_key' => 'new_meta',

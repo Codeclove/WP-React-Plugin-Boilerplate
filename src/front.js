@@ -7,10 +7,10 @@ import ReactFront from './front/react-front/App';
 import reactFront from './front/react-front/scss/react-front.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('#react-front')) {
+  if (document.querySelector('#test-plugin-front')) {
     ReactDOM.render(
       <ReactFront />,
-      document.querySelector('#react-front'),
+      document.querySelector('#test-plugin-front'),
     );
   }
 });

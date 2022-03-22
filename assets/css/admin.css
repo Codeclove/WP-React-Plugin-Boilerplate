@@ -18,7 +18,7 @@
   margin: 0.5em 0;
 }
 
-#react-cpt-metabox .selected-files {
+#test-plugin-cpt-metabox .selected-files {
   background-color: #eee;
   padding: 1em;
   border-radius: 5px;
@@ -47,8 +47,8 @@
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/admin/scss/admin.scss ***!
   \**********************************************************************************************************************************************************************************************************************/
-#react-cpt-metabox input[type=text],
-#react-admin input[type=text] {
+#test-plugin-cpt-metabox input[type=text],
+#test-plugin-admin input[type=text] {
   padding: 16.5px 14px;
   line-height: 1;
   min-height: unset;
@@ -56,16 +56,16 @@
   border: 0;
   height: 100%;
 }
-#react-cpt-metabox input[type=text]:focus,
-#react-admin input[type=text]:focus {
+#test-plugin-cpt-metabox input[type=text]:focus,
+#test-plugin-admin input[type=text]:focus {
   border-color: transparent;
   -webkit-box-shadow: unset;
           box-shadow: unset;
   outline: 0;
 }
-#react-cpt-metabox input[type=checkbox],
-#react-cpt-metabox input[type=radio],
-#react-admin input[type=checkbox],
-#react-admin input[type=radio] {
+#test-plugin-cpt-metabox input[type=checkbox],
+#test-plugin-cpt-metabox input[type=radio],
+#test-plugin-admin input[type=checkbox],
+#test-plugin-admin input[type=radio] {
   height: 100%;
 }
