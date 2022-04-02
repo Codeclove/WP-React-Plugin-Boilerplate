@@ -1,55 +1,43 @@
 import { useEffect, useState } from 'react';
 import RestApi from '../../../services/api';
+import headers from '../../../services/headers';
 
-function useFetch(url, method, bodyData, config) {
-  const [response, setResponse] = useState({
-    data: '',
-    error: '',
-    loading: false,
-  });
+const axiosConfig = {
+  headers: headers(),
+};
 
-  const fetchData = async (
-    fetchUrl,
-    fetchMethod = 'get',
-    fetchBody = '',
-    fetchConfig = {},
-  ) => {
+function useFetch(url, method, body) {
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const fetchData = async (fetchUrl, fetchMethod, fetchBody) => {
+    const fBody = fetchMethod === 'get' ? axiosConfig : fetchBody;
+    const fConfig = fetchMethod === 'get' ? '' : axiosConfig;
     try {
-      setResponse((prevState) => ({
-        ...prevState,
-        loading: true,
-        error: '',
-      }));
+      setLoading(true);
 
-      const { data } = await RestApi[fetchMethod](
+      const { data } = await RestApi[method](
         fetchUrl,
-        fetchBody,
-        fetchConfig,
+        fBody,
+        fConfig,
       );
-
-      setResponse({ data, loading: false, error: false });
-      return { data, loading: false, error: false };
+      setResponse(data);
     } catch (err) {
-      setResponse({
-        data: '',
-        loading: false,
-        error: err,
-      });
-      return {
-        data: '',
-        loading: false,
-        error: err.response.data.message,
-      };
+      // err.response.data.message
+      setError(err.response);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     if (url) {
-      fetchData(url, method, bodyData, config);
+      fetchData(url, method, body);
     }
   }, [url]);
 
-  return [response, fetchData];
+  return [response, error, loading, fetchData];
 }
 
 export default useFetch;

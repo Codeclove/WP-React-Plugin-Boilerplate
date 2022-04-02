@@ -17,33 +17,6 @@
 #meta-settings-form .form-row {
   margin: 0.5em 0;
 }
-
-#test-plugin-cpt-metabox .selected-files {
-  background-color: #eee;
-  padding: 1em;
-  border-radius: 5px;
-  margin: 1em 0;
-}
-
-.media-gallery {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 1em 0;
-  background-color: #eee;
-  border-radius: 5px;
-}
-.media-gallery div {
-  padding: 1em;
-}
-
-.media-item {
-  width: 150px;
-  height: 150px;
-  text-align: center;
-}
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/admin/scss/admin.scss ***!
   \**********************************************************************************************************************************************************************************************************************/
