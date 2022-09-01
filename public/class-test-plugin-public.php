@@ -101,6 +101,8 @@ class Test_Plugin_Public
          */
 
         wp_enqueue_script($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/js/front.js', array('jquery'), $this->version, false);
+        
+        //wp_localize_script($this->plugin_name, 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 
                 //WP Rest Api data
                 wp_localize_script($this->plugin_name, 'wpApiSettings', array(
@@ -118,9 +120,8 @@ class Test_Plugin_Public
 
     public function register_shortcodes()
     {
-        
-        add_shortcode('test-plugin-front', function() {
-            return "<div id='test-plugin-front'></div>";
+        add_shortcode('test-plugin-public', function() {
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/partials/test-plugin-public-display.php';
         });
     }
 

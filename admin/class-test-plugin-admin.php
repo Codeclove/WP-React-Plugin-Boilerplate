@@ -102,6 +102,8 @@ class Test_Plugin_Admin
 
         wp_enqueue_script($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/js/admin.js', array('jquery'), $this->version, false);
 
+         //wp_localize_script($this->plugin_name, 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+
         //WP Rest Api data
         wp_localize_script($this->plugin_name, 'wpApiSettings', array(
             'root' => esc_url_raw(rest_url()),
@@ -170,83 +172,4 @@ class Test_Plugin_Admin
         // );
 
     }
-
-    public function register_endpoints()
-    {
-        register_rest_route($this->plugin_name . '/v1', '/admin-settings', array(
-            array(
-                'methods' => 'GET',
-                'callback' => array($this, 'admin_settings_get_route'),
-                'permission_callback' => function () {
-                    return current_user_can('manage_options');
-                },
-
-            ),
-            array(
-                'methods' => 'POST',
-                'callback' => array($this, 'admin_settings_post_route'),
-                'permission_callback' => function () {
-                    return current_user_can('manage_options');
-                },
-
-            ),
-        ));
-
-        //Media upload
-        register_rest_route($this->plugin_name . '/v1', '/media', array(
-            'methods' => 'POST',
-            'callback' => array($this, 'upload_custom_media'),
-            'permission_callback' => function () {
-                return current_user_can('manage_options');
-            },
-        ));
-
-    }
-
-    public function admin_settings_get_route()
-    {
-        $data = get_option($this->plugin_name . 'settings');
-
-        if (!$data) {
-            $data = "empty";
-        }
-
-        return $data;
-    }
-
-    public function admin_settings_post_route(WP_REST_Request $request)
-    {
-
-        //Get react data
-        $data = $request->get_json_params();
-        if (!$data) {
-            return new WP_Error('no_data', __('No data found'), array('status' => 404));
-        }
-
-        $updated = update_option($this->plugin_name . 'settings', $data);
-        $data = get_option($this->plugin_name . 'settings');
-
-        return $data;
-
-    }
-
-    /**
-     * Upload media to custom directory
-     *
-     * @param array $request parameters
-     * @return string|null Object about media
-     */
-    public function upload_custom_media(WP_REST_Request $request)
-    {
-        global $post;
-        $files = $request->get_file_params();
-        $post_id = $request->get_param('post_id');
-
-        $upload_media = new Test_Plugin\UploadMedia($files, $post_id, 'priecinok');
-        $response = $upload_media->upload();
-
-        return $response;
-
-    }
-
 }

@@ -123,16 +123,18 @@ class Test_Plugin
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
+
+        //Public Classes
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-test-plugin-public.php';
 
         //Admin Classes
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-cpt.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-post-metas.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-meta-box.php';
-
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-upload-media.php';
+        //require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-upload-file.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-endpoints.php';
 
-        //Public Classes
 
         $this->loader = new Test_Plugin_Loader();
 
@@ -170,17 +172,12 @@ class Test_Plugin
 
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-
-        //ENDPOINTS
-        $this->loader->add_action('rest_api_init', $plugin_admin, 'register_endpoints');
-
         //CUSTOM POST TYPE
         //$this->loader->add_action('init', $plugin_admin, 'register_cpt');
 		//CPT METAS
         //$this->loader->add_action('init', $plugin_admin, 'register_cpt_metas');
         //CPT METABOX
         //$this->loader->add_action('add_meta_boxes', $plugin_admin, 'register_metaboxes');
-
         //SETTINGS PAGE
         $this->loader->add_action('admin_menu', $plugin_admin, 'add_menu_item');
 
