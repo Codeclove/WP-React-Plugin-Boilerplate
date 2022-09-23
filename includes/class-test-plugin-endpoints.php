@@ -104,4 +104,4 @@ abstract class Test_Plugin_Endpoints
     }
 }
 
-add_action('rest_api_init', array('Fs_Konektor_Endpoints', 'register_route'));
+add_action('rest_api_init', array('Test_Plugin_Endpoints', 'register_route'));
