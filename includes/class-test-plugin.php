@@ -127,16 +127,26 @@ class Test_Plugin
         //Public Classes
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-test-plugin-public.php';
 
-        //Admin Classes
+        /**
+         * Admin classes
+         */
+
+        //Custom post type
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-cpt.php';
+        //Post Metas
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-post-metas.php';
+        //Metaboxes
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-meta-box.php';
+        //Menu
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-menu.php';
+        //Settings
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-settings.php';
+
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-upload-media.php';
-        //require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-upload-file.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-upload-file.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-endpoints.php';
 
-
-        $this->loader = new Test_Plugin_Loader();
+        $this->loader = new Test_Plugin\Test_Plugin_Loader();
 
     }
 
@@ -152,8 +162,7 @@ class Test_Plugin
     private function set_locale()
     {
 
-        $plugin_i18n = new Test_Plugin_i18n();
-
+        $plugin_i18n = new Test_Plugin\Test_Plugin_i18n();
         $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 
     }
@@ -170,17 +179,20 @@ class Test_Plugin
 
         $plugin_admin = new Test_Plugin_Admin($this->get_plugin_name(), $this->get_version());
 
+        //ENQUEUE ADMIN SCRIPTS
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-        //CUSTOM POST TYPE
-        //$this->loader->add_action('init', $plugin_admin, 'register_cpt');
-		//CPT METAS
-        //$this->loader->add_action('init', $plugin_admin, 'register_cpt_metas');
-        //CPT METABOX
-        //$this->loader->add_action('add_meta_boxes', $plugin_admin, 'register_metaboxes');
-        //SETTINGS PAGE
-        $this->loader->add_action('admin_menu', $plugin_admin, 'add_menu_item');
 
+        //CUSTOM POST TYPE
+        $this->loader->add_action('init', $plugin_admin, 'register_cpt');
+        //CPT METABOXES
+        $this->loader->add_action('add_meta_boxes', $plugin_admin, 'register_metaboxes');
+        //SETTINGS PAGE MENU
+        $this->loader->add_action('admin_menu', $plugin_admin, 'register_menu_items');
+        //SETTINGS PAGE
+        $this->loader->add_action('admin_init', $plugin_admin, 'register_settings');
+        //REST API ENDPOINTS
+        $this->loader->add_action('rest_api_init', $plugin_admin, 'register_routes');
 
     }
 

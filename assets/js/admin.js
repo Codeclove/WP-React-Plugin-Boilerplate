@@ -2829,7 +2829,18 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _admin_react_admin_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin/react-admin/App */ \"./src/admin/react-admin/App.js\");\n/* harmony import */ var _admin_react_cpt_metabox_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin/react-cpt-metabox/App */ \"./src/admin/react-cpt-metabox/App.js\");\n/* harmony import */ var _admin_scss_admin_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin/scss/admin.scss */ \"./src/admin/scss/admin.scss\");\n/* harmony import */ var _admin_react_admin_scss_react_admin_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./admin/react-admin/scss/react-admin.scss */ \"./src/admin/react-admin/scss/react-admin.scss\");\n/* harmony import */ var _admin_react_cpt_metabox_scss_react_cpt_metabox_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./admin/react-cpt-metabox/scss/react-cpt-metabox.scss */ \"./src/admin/react-cpt-metabox/scss/react-cpt-metabox.scss\");\n\n\n\n // eslint-disable-next-line no-unused-vars\n\n // eslint-disable-next-line no-unused-vars\n\n // eslint-disable-next-line no-unused-vars\n\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  if (document.querySelector('#test-plugin-admin')) {\n    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_admin_react_admin_App__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.querySelector('#test-plugin-admin'));\n  }\n\n  if (document.querySelector('#test-plugin-cpt-metabox')) {\n    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_admin_react_cpt_metabox_App__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), document.querySelector('#test-plugin-cpt-metabox'));\n  }\n});\nconsole.log('Hello admin');\n\n//# sourceURL=webpack://test-plugin/./src/admin.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _admin_react_admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./admin/react-admin */ \"./src/admin/react-admin.js\");\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  (0,_admin_react_admin__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n});\nconsole.log('Hello admin');\n\n//# sourceURL=webpack://test-plugin/./src/admin.js?");
+
+/***/ }),
+
+/***/ "./src/admin/react-admin.js":
+/*!**********************************!*\
+  !*** ./src/admin/react-admin.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ reactAdminInit)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _react_admin_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./react-admin/App */ \"./src/admin/react-admin/App.js\");\n/* harmony import */ var _react_cpt_metabox_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./react-cpt-metabox/App */ \"./src/admin/react-cpt-metabox/App.js\");\n/* harmony import */ var _react_simple_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./react-simple/App */ \"./src/admin/react-simple/App.js\");\n/* harmony import */ var _react_admin_scss_react_admin_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./react-admin/scss/react-admin.scss */ \"./src/admin/react-admin/scss/react-admin.scss\");\n/* harmony import */ var _react_cpt_metabox_scss_react_cpt_metabox_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./react-cpt-metabox/scss/react-cpt-metabox.scss */ \"./src/admin/react-cpt-metabox/scss/react-cpt-metabox.scss\");\n\n\n\n\n // eslint-disable-next-line no-unused-vars\n\n // eslint-disable-next-line no-unused-vars\n\n\nfunction reactAdminInit() {\n  if (document.querySelector('#test-plugin-admin-simple')) {\n    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_react_simple_App__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null), document.querySelector('#test-plugin-admin-simple'));\n  }\n\n  if (document.querySelector('#test-plugin-admin')) {\n    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_react_admin_App__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.querySelector('#test-plugin-admin'));\n  }\n\n  if (document.querySelector('#test-plugin-cpt-metabox')) {\n    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_react_cpt_metabox_App__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), document.querySelector('#test-plugin-cpt-metabox'));\n  }\n}\n\n//# sourceURL=webpack://test-plugin/./src/admin/react-admin.js?");
 
 /***/ }),
 
@@ -2965,6 +2976,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/admin/react-simple/App.js":
+/*!***************************************!*\
+  !*** ./src/admin/react-simple/App.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ App)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Hello from react admin\");\n}\n\n//# sourceURL=webpack://test-plugin/./src/admin/react-simple/App.js?");
+
+/***/ }),
+
 /***/ "./src/services/api.js":
 /*!*****************************!*\
   !*** ./src/services/api.js ***!
@@ -3050,17 +3072,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://test-plugin/./src/admin/react-cpt-metabox/scss/react-cpt-metabox.scss?");
-
-/***/ }),
-
-/***/ "./src/admin/scss/admin.scss":
-/*!***********************************!*\
-  !*** ./src/admin/scss/admin.scss ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://test-plugin/./src/admin/scss/admin.scss?");
 
 /***/ }),
 

@@ -1,17 +1,13 @@
 <?php
 namespace Test_Plugin;
 
-/**
- * File where we define CPT, Taxonomies etc.
- */
-
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Test_Plugin\\MetaBox')) {
+if (!class_exists('\\Test_Plugin\\Test_Plugin_Meta_Box')) {
 
-    class Meta_Box
+    class Test_Plugin_Meta_Box
     {
 
         private $post_types = ['post'];

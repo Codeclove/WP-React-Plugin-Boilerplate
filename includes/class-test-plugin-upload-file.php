@@ -1,15 +1,11 @@
 <?php
 namespace Test_Plugin;
 
-/**
- * File where we define CPT, Taxonomies etc.
- */
-
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Nc_Records\\UploadFile')) {
+if (!class_exists('\\Test_Plugin\\UploadFile')) {
 
     class UploadFile
     {
@@ -58,23 +54,23 @@ if (!class_exists('\\Nc_Records\\UploadFile')) {
 
                 if ($file_value['name'] !== '') {
 
-                    if ( !function_exists( 'wp_handle_upload' ) ) {
-                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    if (!function_exists('wp_handle_upload')) {
+                        require_once ABSPATH . 'wp-admin/includes/file.php';
                     }
 
                     if ($file_value) {
-                 
+
                         $path_to_file = wp_upload_dir()['path'] . '/' . $file_value['name'];
                         //Delete if file with this name exists
-                        wp_delete_file($path_to_file);            
+                        wp_delete_file($path_to_file);
                         $newupload = wp_handle_upload($file_value, array('test_form' => false));
 
                         if (is_wp_error($newupload)) {
                             return $newupload;
-                        }      
-                        
+                        }
+
                         $this->response[] = array(
-                            'file_url'=> array_key_exists('url', $newupload) ? $newupload['url'] : '',
+                            'file_url' => array_key_exists('url', $newupload) ? $newupload['url'] : '',
                         );
 
                     }

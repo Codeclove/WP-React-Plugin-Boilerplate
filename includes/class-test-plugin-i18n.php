@@ -1,5 +1,13 @@
 <?php
 
+namespace Test_Plugin;
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+if (!class_exists('\\Test_Plugin\\Test_Plugin_i18n')) {
+
 /**
  * Define the internationalization functionality
  *
@@ -24,24 +32,24 @@
  * @subpackage Test_Plugin/includes
  * @author     Marek Chrást <marek@codeli.sk>
  */
-class Test_Plugin_i18n {
+    class Test_Plugin_i18n
+    {
 
+        /**
+         * Load the plugin text domain for translation.
+         *
+         * @since    1.0.0
+         */
+        public function load_plugin_textdomain()
+        {
 
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_plugin_textdomain() {
+            load_plugin_textdomain(
+                'test-plugin',
+                false,
+                dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
+            );
 
-		load_plugin_textdomain(
-			'test-plugin',
-			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
+        }
 
-	}
-
-
-
+    }
 }

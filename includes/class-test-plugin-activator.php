@@ -1,5 +1,13 @@
 <?php
 
+namespace Test_Plugin;
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+if (!class_exists('\\Test_Plugin\\Test_Plugin_Activator')) {
+
 /**
  * Fired during plugin activation
  *
@@ -33,4 +41,5 @@ class Test_Plugin_Activator {
 
 	}
 
+}
 }

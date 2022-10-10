@@ -16,7 +16,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _front_react_front_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./front/react-front/App */ \"./src/front/react-front/App.js\");\n/* harmony import */ var _front_react_front_scss_react_front_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./front/react-front/scss/react-front.scss */ \"./src/front/react-front/scss/react-front.scss\");\n\n\n // import css from './front/scss/front.scss';\n// eslint-disable-next-line no-unused-vars\n\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  if (document.querySelector('#test-plugin-front')) {\n    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_front_react_front_App__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.querySelector('#test-plugin-front'));\n  }\n});\nconsole.log('Hello front');\n\n//# sourceURL=webpack://test-plugin/./src/front.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _front_react_front__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./front/react-front */ \"./src/front/react-front.js\");\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  (0,_front_react_front__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n  console.log('Hello front');\n});\n\n//# sourceURL=webpack://test-plugin/./src/front.js?");
+
+/***/ }),
+
+/***/ "./src/front/react-front.js":
+/*!**********************************!*\
+  !*** ./src/front/react-front.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ reactFrontInit)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _react_front_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./react-front/App */ \"./src/front/react-front/App.js\");\n/* harmony import */ var _react_front_scss_react_front_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./react-front/scss/react-front.scss */ \"./src/front/react-front/scss/react-front.scss\");\n\n\n // eslint-disable-next-line no-unused-vars\n\n\nfunction reactFrontInit() {\n  if (document.querySelector('#test-plugin-front')) {\n    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_react_front_App__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.querySelector('#test-plugin-front'));\n  }\n}\n\n//# sourceURL=webpack://test-plugin/./src/front/react-front.js?");
 
 /***/ }),
 

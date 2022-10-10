@@ -5,19 +5,16 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Test_Plugin\\PostMetas')) {
+if (!class_exists('\\Test_Plugin\\Test_Plugin_Post_Metas')) {
 
-    /**
-     * PostMetas - regitster metas for custom post type object. To show metas in rest output custom post type must support 'Custom-fields'.
-     */
-    class PostMetas
+    class Test_Plugin_Post_Metas
     {
 
-        public $metas = array(
+        public static $metas = array(
 
             'test_meta' => array(
                 'type' => 'string',
-                'default' => 'modro-cervena',
+                'default' => 'default-value',
             ),
             'test_meta_number' => array(
                 'type' => 'number',
@@ -35,10 +32,10 @@ if (!class_exists('\\Test_Plugin\\PostMetas')) {
                     ),
                 ),
             ),
-       );
-        public function __construct()
+        );
+        public static function init()
         {
-            foreach ($this->metas as $meta_key => $meta_args) {
+            foreach (self::$metas as $meta_key => $meta_args) {
 
                 $meta_args['single'] = true;
                 if (!array_key_exists('show_in_rest', $meta_args)) {

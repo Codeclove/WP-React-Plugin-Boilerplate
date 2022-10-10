@@ -11,8 +11,10 @@
  * @package    Test_Plugin
  * @subpackage Test_Plugin/admin/partials
  */
+
 ?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<h1>React settings</h1>
-<div id="test-plugin-admin"></div>
+	<p id="<?php echo esc_attr( $args['id'] ); ?>">Popis sekcie.</p>
+
+
+

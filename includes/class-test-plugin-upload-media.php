@@ -1,10 +1,6 @@
 <?php
 namespace Test_Plugin;
 
-/**
- * File where we define CPT, Taxonomies etc.
- */
-
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
@@ -66,8 +62,6 @@ if (!class_exists('\\Test_Plugin\\UploadMedia')) {
                         require_once ABSPATH . "wp-admin" . '/includes/media.php';
                     }
 
-      
-
                     if ($file_value) {
                         $newupload = media_handle_upload($file_key, $this->post_id);
                         $attachment_url = wp_get_attachment_url($newupload);
@@ -79,8 +73,8 @@ if (!class_exists('\\Test_Plugin\\UploadMedia')) {
 
                         $this->response[] = array(
                             'media_id' => $newupload,
-                            'media_url'=> $attachment_url,
-                            'media_thumb_url' => $attachment_thumb_url
+                            'media_url' => $attachment_url,
+                            'media_thumb_url' => $attachment_thumb_url,
                         );
                     }
                 }

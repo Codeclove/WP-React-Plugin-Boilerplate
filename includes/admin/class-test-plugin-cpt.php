@@ -1,24 +1,20 @@
 <?php
 namespace Test_Plugin;
 
-/**
- * File where we define CPT, Taxonomies etc.
- */
-
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Test_Plugin\\CPT')) {
+if (!class_exists('\\Test_Plugin\\Test_Plugin_CPT')) {
 
-    class CPT
+    class Test_Plugin_CPT
     {
 
         /**
          * Initialize custom post type
          * @return void
          */
-        public function init()
+        public static function init()
         {
 
             register_post_type('custom-posts', array(
@@ -84,13 +80,13 @@ if (!class_exists('\\Test_Plugin\\CPT')) {
                 'rest_controller_class' => 'WP_REST_Terms_Controller',
             ));
 
-            $this->register_sponsors();
+            self::register_sponsors();
         }
 
         /**
          * Registering the Sponsors Taxonomy.
          */
-        public function register_sponsors()
+        public static function register_sponsors()
         {
             $labels = array(
                 'name' => _x('Sponsors', 'Taxonomy General Name', 'test-plugin'),

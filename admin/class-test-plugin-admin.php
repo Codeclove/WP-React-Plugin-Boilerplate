@@ -102,7 +102,7 @@ class Test_Plugin_Admin
 
         wp_enqueue_script($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/js/admin.js', array('jquery'), $this->version, false);
 
-         //wp_localize_script($this->plugin_name, 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+        //wp_localize_script($this->plugin_name, 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 
         //WP Rest Api data
         wp_localize_script($this->plugin_name, 'wpApiSettings', array(
@@ -120,48 +120,34 @@ class Test_Plugin_Admin
 
     public function register_cpt()
     {
-        $cpt = new Test_Plugin\CPT;
-        $cpt->init();
+        //Custom post types
+        Test_Plugin\Test_Plugin_CPT::init();
+        Test_Plugin\Test_Plugin_Post_Metas::init();
     }
 
     public function register_metaboxes()
     {
-        $metabox = new Test_Plugin\Meta_Box(['custom-posts'], __('Metabox title', 'test-plugin'));
+
+        //Metaboxes
+        $metabox = new Test_Plugin\Test_Plugin_Meta_Box(['custom-posts'], __('Metabox title', 'test-plugin'));
         $metabox->add();
     }
-    public function register_cpt_metas()
+
+    public function register_routes() {
+        Test_Plugin\Test_Plugin_Endpoints::register_routes($this->plugin_name);
+    }
+
+    public function register_menu_items()
     {
-        new Test_Plugin\PostMetas();
+
+        Test_Plugin\Test_Plugin_Menu::register_menu_items();
 
     }
 
-    public function add_menu_item()
+    public function register_settings()
     {
-
-        /**
-         * Adds a submenu page under a custom post type parent.
-         */
-
-        add_submenu_page(
-            'edit.php?post_type=custom-posts',
-            __('Page title', 'test-plugin'),
-            __('Submenu name', 'test-plugin'),
-            'manage_options',
-            'test-plugin-settings',
-            function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';},
-        );
-
-        /**
-         * Add the top level menu page.
-         */
-
-        // add_menu_page(
-        //     __('React settings', 'test-plugin'), //Page title
-        //     __('React settings', 'test-plugin'), //Menu title
-        //     'manage_options',
-        //     'test-plugin-settings',
-        //     function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-display.php';},
-        // );
-
+       Test_Plugin\Test_Plugin_Settings::register_settings();
     }
+
+  
 }
