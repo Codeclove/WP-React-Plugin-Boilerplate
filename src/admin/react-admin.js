@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import SettingsApp from './react-admin/App';
 import MetaboxApp from './react-cpt-metabox/App';
@@ -12,21 +12,22 @@ import reactCptMetabox from './react-cpt-metabox/scss/react-cpt-metabox.scss';
 
 export default function reactAdminInit() {
   if (document.querySelector('#test-plugin-admin-simple')) {
-    ReactDOM.render(
-      <ReactSimpleApp />,
-      document.querySelector('#test-plugin-admin-simple'),
+    const rootElement = document.getElementById(
+      'test-plugin-admin-simple',
     );
+    const root = createRoot(rootElement);
+    root.render(<ReactSimpleApp />);
   }
   if (document.querySelector('#test-plugin-admin')) {
-    ReactDOM.render(
-      <SettingsApp />,
-      document.querySelector('#test-plugin-admin'),
-    );
+    const rootElement = document.getElementById('test-plugin-admin');
+    const root = createRoot(rootElement);
+    root.render(<SettingsApp />);
   }
   if (document.querySelector('#test-plugin-cpt-metabox')) {
-    ReactDOM.render(
-      <MetaboxApp />,
-      document.querySelector('#test-plugin-cpt-metabox'),
+    const rootElement = document.getElementById(
+      'test-plugin-cpt-metabox',
     );
+    const root = createRoot(rootElement);
+    root.render(<MetaboxApp />);
   }
 }

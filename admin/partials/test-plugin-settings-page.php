@@ -16,7 +16,7 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
 <!-- When React is used -->
-<!-- <div id="test-plugin-admin"></div> -->
+<div id="test-plugin-admin-simple"></div> 
 
 <?php
 
