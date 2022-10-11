@@ -56,13 +56,13 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_Endpoints')) {
             return $data;
         }
 
-        public static function admin_settings_post_route(WP_REST_Request $request)
+        public static function admin_settings_post_route(\WP_REST_Request $request)
         {
 
             //Get react data
             $data = $request->get_json_params();
             if (!$data) {
-                return new WP_Error('no_data', __('No data found'), array('status' => 404));
+                return new \WP_Error('no_data', __('No data found'), array('status' => 404));
             }
 
             $updated = update_option(self::$plugin_name . 'settings', $data);
@@ -78,13 +78,13 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_Endpoints')) {
          * @param object $request parameters
          * @return string|null Object about media
          */
-        public static function upload_custom_media(WP_REST_Request $request)
+        public static function upload_custom_media(\WP_REST_Request $request)
         {
             global $post;
             $files = $request->get_file_params();
             $post_id = $request->get_param('post_id');
 
-            $upload_media = new UploadMedia($files, $post_id, 'priecinok');
+            $upload_media = new Test_Plugin_UploadMedia($files, $post_id, 'priecinok');
             $response = $upload_media->upload();
 
             return $response;
@@ -97,11 +97,11 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_Endpoints')) {
          * @param object $request parameters
          * @return string|null Object about media
          */
-        public function upload_file(WP_REST_Request $request)
+        public function upload_file(\WP_REST_Request $request)
         {
             $files = $request->get_file_params();
 
-            $upload_media = new UploadFile($files, 'custom-directory');
+            $upload_media = new Test_Plugin_UploadFile($files, 'custom-directory');
             $response = $upload_media->upload();
 
             return $response;

@@ -5,9 +5,9 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Test_Plugin\\UploadFile')) {
+if (!class_exists('\\Test_Plugin\\Test_Plugin_UploadFile')) {
 
-    class UploadFile
+    class Test_Plugin_UploadFile
     {
 
         public $files;

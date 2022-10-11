@@ -1,13 +1,13 @@
 <?php
-namespace TestPlugin;
+namespace Test_Plugin;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\TestPlugin\\TestPlugin_Meta_Box')) {
+if (!class_exists('\\Test_Plugin\\Test_Plugin_Meta_Box')) {
 
-    class TestPlugin_Meta_Box
+    class Test_Plugin_Meta_Box
     {
 
         private $post_types = ['post'];
@@ -50,7 +50,7 @@ if (!class_exists('\\TestPlugin\\TestPlugin_Meta_Box')) {
          */
         public function html($post)
         {
-            require_once plugin_dir_path(dirname(dirname(__FILE__))) . 'admin/partials/test-plugin-cpt-metabox.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-cpt-metabox.php';
         }
     }
 }

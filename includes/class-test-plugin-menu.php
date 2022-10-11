@@ -22,7 +22,7 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_Menu')) {
         //     __('Submenu name', 'test-plugin'),
         //     'manage_options',
         //     'test-plugin',
-        //     function () {require_once TEST_PLUGIN_DIR . 'admin/partials/test-plugin-admin-settings.php';},
+        //     function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-admin-settings.php';},
         // );
 
         /**
@@ -34,7 +34,7 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_Menu')) {
             __('Plugin settings', 'test-plugin'), //Menu title
             'manage_options',
             'test-plugin',
-            function () {require_once TEST_PLUGIN_DIR . 'admin/partials/test-plugin-settings-page.php';},
+            function () {require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/test-plugin-settings-page.php';},
         );
         }
     }
