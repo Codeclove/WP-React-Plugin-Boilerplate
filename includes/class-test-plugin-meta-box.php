@@ -1,13 +1,13 @@
 <?php
-namespace Test_Plugin;
+namespace TestPlugin;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Test_Plugin\\Test_Plugin_Meta_Box')) {
+if (!class_exists('\\TestPlugin\\TestPlugin_Meta_Box')) {
 
-    class Test_Plugin_Meta_Box
+    class TestPlugin_Meta_Box
     {
 
         private $post_types = ['post'];

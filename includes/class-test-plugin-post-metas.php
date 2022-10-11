@@ -1,13 +1,13 @@
 <?php
-namespace Test_Plugin;
+namespace TestPlugin;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Test_Plugin\\Test_Plugin_Post_Metas')) {
+if (!class_exists('\\TestPlugin\\TestPlugin_Post_Metas')) {
 
-    class Test_Plugin_Post_Metas
+    class TestPlugin_Post_Metas
     {
 
         public static $metas = array(

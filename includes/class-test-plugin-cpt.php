@@ -1,13 +1,13 @@
 <?php
-namespace Test_Plugin;
+namespace TestPlugin;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\Test_Plugin\\Test_Plugin_CPT')) {
+if (!class_exists('\\TestPlugin\\TestPlugin_CPT')) {
 
-    class Test_Plugin_CPT
+    class TestPlugin_CPT
     {
 
         /**
