@@ -1,13 +1,13 @@
 <?php
-namespace TestPlugin;
+namespace Test_Plugin;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('\\TestPlugin\\TestPlugin_Menu')) {
+if (!class_exists('\\Test_Plugin\\Test_Plugin_Menu')) {
 
-    class TestPlugin_Menu
+    class Test_Plugin_Menu
     {
         public static function register_menu_items()
         {
@@ -22,7 +22,7 @@ if (!class_exists('\\TestPlugin\\TestPlugin_Menu')) {
         //     __('Submenu name', 'test-plugin'),
         //     'manage_options',
         //     'test-plugin',
-        //     function () {require_once TestPlugin_DIR . 'admin/partials/test-plugin-admin-settings.php';},
+        //     function () {require_once TEST_PLUGIN_DIR . 'admin/partials/test-plugin-admin-settings.php';},
         // );
 
         /**
@@ -34,7 +34,7 @@ if (!class_exists('\\TestPlugin\\TestPlugin_Menu')) {
             __('Plugin settings', 'test-plugin'), //Menu title
             'manage_options',
             'test-plugin',
-            function () {require_once TestPlugin_DIR . 'admin/partials/test-plugin-settings-page.php';},
+            function () {require_once TEST_PLUGIN_DIR . 'admin/partials/test-plugin-settings-page.php';},
         );
         }
     }

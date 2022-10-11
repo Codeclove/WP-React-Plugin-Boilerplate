@@ -132,15 +132,15 @@ class Test_Plugin
          */
 
         //Custom post type
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-cpt.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-cpt.php';
         //Post Metas
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-post-metas.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-post-metas.php';
         //Metaboxes
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-meta-box.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-meta-box.php';
         //Menu
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-menu.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-menu.php';
         //Settings
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/admin/class-test-plugin-settings.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-settings.php';
 
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-upload-media.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-test-plugin-upload-file.php';
