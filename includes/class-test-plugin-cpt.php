@@ -47,39 +47,6 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_CPT')) {
                 'rest_controller_class' => 'WP_REST_Posts_Controller',
             ));
 
-            register_taxonomy('breed', array('custom-posts'), array(
-                'hierarchical' => true,
-                'public' => true,
-                'show_in_nav_menus' => true,
-                'show_ui' => true,
-                'show_admin_column' => false,
-                'query_var' => true,
-                'rewrite' => true,
-                'capability_type' => 'post',
-                'labels' => array(
-                    'name' => __('Breed', 'test-plugin'),
-                    'singular_name' => _x('Breed', 'taxonomy general name', 'test-plugin'),
-                    'search_items' => __('Search Breed', 'test-plugin'),
-                    'popular_items' => __('Popular Breed', 'test-plugin'),
-                    'all_items' => __('All Breed', 'test-plugin'),
-                    'parent_item' => __('Parent Breed', 'test-plugin'),
-                    'parent_item_colon' => __('Parent Breed:', 'test-plugin'),
-                    'edit_item' => __('Edit Breed', 'test-plugin'),
-                    'update_item' => __('Update Breed', 'test-plugin'),
-                    'add_new_item' => __('New Breed', 'test-plugin'),
-                    'new_item_name' => __('New Breed', 'test-plugin'),
-                    'separate_items_with_commas' => __('Separate Breed with commas', 'test-plugin'),
-                    'add_or_remove_items' => __('Add or remove Breed', 'test-plugin'),
-                    'choose_from_most_used' => __('Choose from the most used Breed', 'test-plugin'),
-                    'not_found' => __('No Breed found.', 'test-plugin'),
-                    'menu_name' => __('Breed', 'test-plugin'),
-                ),
-                'show_in_rest' => true,
-             
-                'rest_base' => 'breed',
-                'rest_controller_class' => 'WP_REST_Terms_Controller',
-            ));
-
             self::register_sponsors();
         }
 
@@ -117,7 +84,9 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_CPT')) {
                 'show_ui' => true,
                 'show_admin_column' => true,
                 'show_in_nav_menus' => true,
-                'show_tagcloud' => true,
+                'show_in_rest' => true,
+                'rest_base' => 'sponsors',
+                'rest_controller_class' => 'WP_REST_Terms_Controller',
             );
             register_taxonomy('sponsors', array('custom-posts'), $args);
         }
