@@ -1,6 +1,8 @@
 <?php
 
 namespace Test_Plugin;
+use Test_Plugin\Test_Plugin_Upload_Media;
+use Test_Plugin\Test_Plugin_Upload_File;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
@@ -84,7 +86,7 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_Endpoints')) {
             $files = $request->get_file_params();
             $post_id = $request->get_param('post_id');
 
-            $upload_media = new Test_Plugin_UploadMedia($files, $post_id, 'priecinok');
+            $upload_media = new Test_Plugin_Upload_Media($files, $post_id, 'priecinok');
             $response = $upload_media->upload();
 
             return $response;
@@ -101,7 +103,7 @@ if (!class_exists('\\Test_Plugin\\Test_Plugin_Endpoints')) {
         {
             $files = $request->get_file_params();
 
-            $upload_media = new Test_Plugin_UploadFile($files, 'custom-directory');
+            $upload_media = new Test_Plugin_Upload_File($files, 'custom-directory');
             $response = $upload_media->upload();
 
             return $response;

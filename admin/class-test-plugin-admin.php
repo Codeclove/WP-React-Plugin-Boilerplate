@@ -1,5 +1,12 @@
 <?php
 
+use Test_Plugin\Test_Plugin_CPT;
+use Test_Plugin\Test_Plugin_Post_Metas;
+use Test_Plugin\Test_Plugin_Meta_Box;
+use Test_Plugin\Test_Plugin_Menu;
+use Test_Plugin\Test_Plugin_Settings;
+use Test_Plugin\Test_Plugin_Endpoints;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -121,32 +128,32 @@ class Test_Plugin_Admin
     public function register_cpt()
     {
         //Custom post types
-        Test_Plugin\Test_Plugin_CPT::init();
-        Test_Plugin\Test_Plugin_Post_Metas::init();
+        Test_Plugin_CPT::init();
+        Test_Plugin_Post_Metas::init();
     }
 
     public function register_metaboxes()
     {
 
         //Metaboxes
-        $metabox = new Test_Plugin\Test_Plugin_Meta_Box(['custom-posts'], __('Metabox title', 'test-plugin'));
+        $metabox = new Test_Plugin_Meta_Box(['custom-posts'], __('Metabox title', 'test-plugin'));
         $metabox->add();
     }
 
     public function register_routes() {
-        Test_Plugin\Test_Plugin_Endpoints::register_routes($this->plugin_name);
+        Test_Plugin_Endpoints::register_routes($this->plugin_name);
     }
 
     public function register_menu_items()
     {
 
-        Test_Plugin\Test_Plugin_Menu::register_menu_items();
+        Test_Plugin_Menu::register_menu_items();
 
     }
 
     public function register_settings()
     {
-       Test_Plugin\Test_Plugin_Settings::register_settings();
+       Test_Plugin_Settings::register_settings();
     }
 
   

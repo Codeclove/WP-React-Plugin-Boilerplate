@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 
 if (!class_exists('\\Test_Plugin\\Test_Plugin_UploadMedia')) {
 
-    class Test_Plugin_UploadMedia
+    class Test_Plugin_Upload_Media
     {
 
         public $files;

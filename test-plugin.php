@@ -1,5 +1,7 @@
 <?php
 
+use Test_Plugin\Test_Plugin_Activator;
+use Test_Plugin\Test_Plugin_Deactivator;
 /**
  * The plugin bootstrap file
  *
@@ -43,7 +45,7 @@ define( 'TEST_PLUGIN_VERSION', '1.0.0' );
  */
 function activate_test_plugin() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-test-plugin-activator.php';
-	Test_Plugin\Test_Plugin_Activator::activate();
+	Test_Plugin_Activator::activate();
 }
 
 /**
@@ -52,7 +54,7 @@ function activate_test_plugin() {
  */
 function deactivate_test_plugin() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-test-plugin-deactivator.php';
-	Test_Plugin\Test_Plugin_Deactivator::deactivate();
+	Test_Plugin_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_test_plugin' );
